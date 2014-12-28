@@ -13,8 +13,8 @@ PID  TTY      STAT   TIME COMMAND
 
 
   def grep(input, match) do
-    lines = String.split(input, "\n")
-    Enum.filter(lines, fn(line) -> Regex.match?(match, line) end)
+    String.split(input, "\n")
+    |> Enum.filter(fn(line) -> Regex.match?(match, line) end)
   end
 
   def awk(input, column) do
