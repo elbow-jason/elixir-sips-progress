@@ -10,6 +10,14 @@ defmodule HealthComponent do
     :gen_event.call(entity, HealthComponent, :alive?)
   end
 
+  def handle_event({:hit, amount}, hp) do
+    {:ok, hp - amount}
+  end
+
+  def handle_event({:heal, amount}, hp) do
+    {:ok, hp + amount}
+  end
+
   ### GenEvent API
   def init(hp) do
     {:ok, hp}
