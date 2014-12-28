@@ -1,0 +1,2 @@
+defmodule SupervisedList do
+end
