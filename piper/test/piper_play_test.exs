@@ -17,11 +17,15 @@ PID  TTY      STAT   TIME COMMAND
     |> Enum.filter(fn(line) -> Regex.match?(match, line) end)
   end
 
+  defp split_space(stripped) do
+    Regex.split(~r{ }, stripped, trim: true)
+  end
+
   def awk(input, column) do
     Enum.map(input, fn(line) ->
-      stripped = String.strip(line)
-      columns = Regex.split(~r{ }, stripped, trim: true)
-      Enum.at(columns, column-1)
+    String.strip(line)
+    |> split_space
+    |> Enum.at(column-1)
     end)
   end
 end
