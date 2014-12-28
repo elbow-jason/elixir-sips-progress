@@ -65,6 +65,11 @@ PID  TTY      STAT   TIME COMMAND
   end
 
   test "whole pipeline works" do
-    assert (Unix.ps_ax |> Unix.grep(~r/dbus/) |> Unix.awk(1)) == ["7004", "7005"]
+    assert (
+      Unix.ps_ax
+      |> Unix.grep(~r/dbus/)
+      |> Unix.awk(1)
+      ) == ["7004", "7005"]
   end
+
 end
