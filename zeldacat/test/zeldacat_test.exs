@@ -22,5 +22,14 @@ defmodule ZeldacatTest do
     assert XYComponent.get_position(entity) == {50, 35}
   end
 
+  test "something with a WeaponComponent can manage a list of weapons" do
+    {:ok, entity} = Entity.init()
+    Entity.add_component(entity, WeaponComponent, [])
+    Entity.notify(entity, {:add_weapon, "knife"})
+    assert WeaponComponent.list_weapons(entity) == ["knife"]
+    Entity.notify(entity, {:add_weapon, "gun"})
+    assert WeaponComponent.list_weapons(entity) == ["knife", "gun"]
+  end
+
 end
 
