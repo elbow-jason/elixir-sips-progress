@@ -10,6 +10,12 @@ PID  TTY      STAT   TIME COMMAND
 7005 ?        Ss     0:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7
     """
   end
+
+
+  def grep(input, match) do
+    lines = String.split(input, "\n")
+    Enum.filter(lines, fn(line) -> Regex.match?(~r{#{match}}, line) end)
+  end
 end
 
 defmodule PiperPlayTest do
@@ -40,7 +46,7 @@ PID  TTY      STAT   TIME COMMAND
     wildruby
     rubyman
     """
-    output = ["rubyta", "ruby", "rubyman"]
+    output = ["rubyta", "ruby", "wildruby", "rubyman"]
     assert Unix.grep(lines, "ruby") == output
   end
 
