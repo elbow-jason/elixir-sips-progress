@@ -16,6 +16,14 @@ PID  TTY      STAT   TIME COMMAND
     lines = String.split(input, "\n")
     Enum.filter(lines, fn(line) -> Regex.match?(match, line) end)
   end
+
+  def awk(input, column) do
+    Enum.map(input, fn(line) ->
+      stripped = String.strip(line)
+      columns = Regex.split(~r{ }, stripped, trim: true)
+      Enum.at(columns, column-1)
+    end)
+  end
 end
 
 defmodule PiperPlayTest do
