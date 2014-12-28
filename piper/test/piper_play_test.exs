@@ -28,7 +28,7 @@ PID  TTY      STAT   TIME COMMAND
 5365 ?        S<     0:00 [kworker/u9:0]
 6972 ?        Sl     0:00 mdm
 6979 tty7     Ssl+ 138:33 /usr/bin/X :0 -audit 0 -auth /var/lib/mdm/:0.Xauth -noli
-7004 ?        S      0:00 dbus-launch --autolaunch=fb26cdfba7cc7e4a415b5ad55306ab0
+7004 ?        S      0:00 dbus-launch --autolaunch=fb26cdfba7cc7e4a415b5ad55306ab1
 7005 ?        Ss     0:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7
     """
     assert Unix.ps_ax == output
