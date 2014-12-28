@@ -3,6 +3,7 @@ defmodule ListServerTest do
   
   #clear list server for each test
   setup do
+    ListServer.start_link
     ListServer.clear
   end
 
