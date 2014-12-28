@@ -51,6 +51,9 @@ PID  TTY      STAT   TIME COMMAND
   end
 
   test "awk(input, 1) split on whitespace and return 1st column" do
+    input = ["foo bar"," baz   qux  "]
+    output = ["foo", "baz"]
+    assert Unix.awk(input, 1) == output
   end
 
   test "whole pipeline works" do
