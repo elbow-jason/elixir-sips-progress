@@ -30,6 +30,18 @@ PID  TTY      STAT   TIME COMMAND
   end
 
   test "grep(lines, thing) returns lines that match 'thing'" do
+    lines ="""
+    jason
+    mary
+    rubyta
+    jason mary
+    wildman
+    ruby
+    wildruby
+    rubyman
+    """
+    output = ["rubyta", "ruby", "rubyman"]
+    assert Unix.grep(lines, "ruby") == output
   end
 
   test "awk(input, 1) split on whitespace and return 1st column" do
