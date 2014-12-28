@@ -65,11 +65,18 @@ PID  TTY      STAT   TIME COMMAND
   end
 
   test "whole pipeline works" do
-    assert (
-      Unix.ps_ax
+    piped_output = Unix.ps_ax
       |> Unix.grep(~r/dbus/)
       |> Unix.awk(1)
-      ) == ["7004", "7005"]
+
+    expected = ["7004", "7005"]
+    assert piped_output == expected
+  end
+
+  test "unpiped/nested formatting works" do
+    expected = ["7004", "7005"]
+    unpiped_output = (Unix.awk(Unix.grep(Unix.ps_ax, ~r{dbus}), 1))
+    assert unpiped_output == expected
   end
 
 end
