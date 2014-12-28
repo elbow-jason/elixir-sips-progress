@@ -6,7 +6,7 @@ PID  TTY      STAT   TIME COMMAND
 5365 ?        S<     0:00 [kworker/u9:0]
 6972 ?        Sl     0:00 mdm
 6979 tty7     Ssl+ 138:33 /usr/bin/X :0 -audit 0 -auth /var/lib/mdm/:0.Xauth -noli
-7004 ?        S      0:00 dbus-launch --autolaunch=fb26cdfba7cc7e4a415b5ad55306ab0
+7004 ?        S      0:00 dbus-launch 
 7005 ?        Ss     0:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7
     """
   end
@@ -14,7 +14,7 @@ PID  TTY      STAT   TIME COMMAND
 
   def grep(input, match) do
     lines = String.split(input, "\n")
-    Enum.filter(lines, fn(line) -> Regex.match?(~r{#{match}}, line) end)
+    Enum.filter(lines, fn(line) -> Regex.match?(match, line) end)
   end
 end
 
@@ -47,7 +47,7 @@ PID  TTY      STAT   TIME COMMAND
     rubyman
     """
     output = ["rubyta", "ruby", "wildruby", "rubyman"]
-    assert Unix.grep(lines, "ruby") == output
+    assert Unix.grep(lines, ~r{ruby}) == output
   end
 
   test "awk(input, 1) split on whitespace and return 1st column" do
