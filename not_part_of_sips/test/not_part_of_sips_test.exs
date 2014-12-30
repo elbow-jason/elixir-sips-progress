@@ -25,7 +25,9 @@ defmodule NotPartOfSipsTest do
     assert ["Mary"] == NotSip.my_list |> List.delete("Jason")
   end
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "what does foldr do?" do
+    list = [1,2,3,4]
+    sum = List.foldr list, 0, fn x, y -> x + y end
+    assert sum == 10
   end
 end
