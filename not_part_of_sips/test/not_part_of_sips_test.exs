@@ -30,4 +30,10 @@ defmodule NotPartOfSipsTest do
     sum = List.foldr list, 0, fn x, y -> x + y end
     assert sum == 10
   end
+
+  test "what does foldl do?" do
+    list = [1,2,3,4]
+    sum = List.foldl list, 0, fn x, y -> x + y end
+    assert sum == 10
+  end
 end
