@@ -71,7 +71,12 @@ defmodule NotPartOfSipsTest do
     assert {:ok, "Jason"} == my_map |> Map.fetch(:boy)
   end
 
-  test "what does getting invalid keys do? Returns nil." do
+  test "what does Map.put do? Changes values of keys." do
+    assert Map.put(my_map, :boy, "Unjason")[:boy] == "Unjason"
+    assert my_map |> Map.put(:boy, "Unjason") |> Map.get(:boy) == "Unjason"
+  end
+
+  test "invalid map keys? Returns nil." do
     assert my_map[:thing] == nil
     #now with more pipes!
     assert my_map |> Map.get(:thing) == nil
@@ -81,7 +86,7 @@ defmodule NotPartOfSipsTest do
     assert_raise KeyError, fn -> my_map.thing end
   end
 
-  test "invalid Map.fetch?" do
+  test "invalid Map.fetch? returns :error not ok_tuple" do
     assert :error = my_map |> Map.fetch(:thing)
   end
 
