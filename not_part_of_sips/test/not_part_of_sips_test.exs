@@ -50,9 +50,14 @@ defmodule NotPartOfSipsTest do
     %{boy: "Jason", girl: "Mary"}
   end
 
-  test "what does Map.get do?" do
+  test "what does Map.get do? it gets things. duh" do
     assert Map.get(my_map, :boy) == "Jason"
     assert Map.get(my_map, :girl) == "Mary"
+  end
+
+  test "what does access by key/symbol do? The same thing as get!" do
+    assert my_map[:boy] == "Jason"
+    assert my_map[:girl] == "Mary"
   end
 
 end
