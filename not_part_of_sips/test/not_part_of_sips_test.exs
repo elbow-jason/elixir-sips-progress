@@ -17,6 +17,13 @@ defmodule NotPartOfSipsTest do
     assert "Mary" == NotSip.my_list |> tl |> hd
   end
 
+  test "pipe the List.last" do
+    assert "Mary" == NotSip.my_list |> List.last
+  end
+
+  test "pipe the delete" do
+    assert ["Mary"] == NotSip.my_list |> List.delete("Jason")
+  end
 
   test "the truth" do
     assert 1 + 1 == 2
