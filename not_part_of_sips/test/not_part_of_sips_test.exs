@@ -36,4 +36,10 @@ defmodule NotPartOfSipsTest do
     sum = List.foldl list, 0, fn x, y -> x + y end
     assert sum == 10
   end
+
+  test "what does List.wrap do? puts brackets around things" do
+    #there is no List.wrap/2
+    assert [1] == 1 |> List.wrap
+  end
+
 end
