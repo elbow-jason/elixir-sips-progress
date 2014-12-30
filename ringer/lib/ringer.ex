@@ -1,0 +1,2 @@
+defmodule Ringer do
+end
