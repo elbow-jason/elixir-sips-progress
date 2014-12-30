@@ -60,4 +60,23 @@ defmodule NotPartOfSipsTest do
     assert my_map[:girl] == "Mary"
   end
 
+  test "what does getting invalid keys do?" do
+    assert my_map[:thing] == nil
+    #now with more pipes!
+    assert my_map |> Map.get(:thing) == nil
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
