@@ -87,7 +87,8 @@ defmodule NotPartOfSipsTest do
   end
 
   test "invalid Map.fetch? returns :error not ok_tuple" do
-    assert :error = my_map |> Map.fetch(:thing)
+    err = my_map |> Map.fetch(:thing)
+    assert err == :error
   end
 
 
