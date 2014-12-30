@@ -60,7 +60,12 @@ defmodule NotPartOfSipsTest do
     assert my_map[:girl] == "Mary"
   end
 
-  test "what does getting invalid keys do?" do
+  test "what does access by dot notation do? The same thing as get!" do
+    assert my_map.boy == "Jason"
+    assert my_map.girl == "Mary"
+  end
+
+  test "what does getting invalid keys do? Returns nil." do
     assert my_map[:thing] == nil
     #now with more pipes!
     assert my_map |> Map.get(:thing) == nil
