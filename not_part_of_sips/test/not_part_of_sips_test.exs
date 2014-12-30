@@ -75,6 +75,11 @@ defmodule NotPartOfSipsTest do
     assert_raise KeyError, fn -> my_map.thing end
   end
 
+  test "what does Map.fetch do? it returns an ok_tuple" do
+    assert {:ok, "Jason"} == Map.fetch(my_map, :boy)
+    # with pipes!!!
+    assert {:ok, "Jason"} == my_map |> Map.fetch(:boy)
+  end
 
 
 
