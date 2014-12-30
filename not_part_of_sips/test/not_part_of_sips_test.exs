@@ -71,6 +71,9 @@ defmodule NotPartOfSipsTest do
     assert my_map |> Map.get(:thing) == nil
   end
 
+  test "invalid dot notation? causes an error. Don't use it" do
+    assert_raise KeyError, fn -> my_map.thing end
+  end
 
 
 
