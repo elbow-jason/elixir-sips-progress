@@ -20,4 +20,12 @@ defmodule FiboTest do
   test "fib 10" do
     assert Fibo.fib(10) == [1,1,2,3,5,8,13,21,34,55]
   end
+
+  test "fib -10" do
+    assert Fibo.fib(-10) == :error
+  end
+
+  test "fib :harharhar" do
+    assert Fibo.fib(:harharhar) == :error
+  end
 end
