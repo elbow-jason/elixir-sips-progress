@@ -90,32 +90,4 @@ defmodule NotPartOfSipsTest do
     err = my_map |> Map.fetch(:thing)
     assert err == :error
   end
-
-  require Record
-  Record.defrecord :person, [name: nil, age: -1]
-
-  defimpl String.Chars, for: person do
-    def to_string(person) do
-      person[:name]
-    end
-  end
-
-  #defrecordp :cat, name: nil, toy: nil
-
-  #test "defrecordp is a thing? Yes" do
-  #  kitty = cat(name: "Ruby", toy: "fur thingy")
-  #  assert kitty = {:cat, "Ruby", "fur thingy"}
-  #end
-  test "Person.to_string gives the person's name" do
-    jason = person(name: "Jason", age: 31)
-    assert jason.to_string == "Jason"
-  end
-
-
-
-
-
-
-
-
 end
