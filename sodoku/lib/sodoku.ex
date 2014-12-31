@@ -1,0 +1,2 @@
+defmodule Sodoku do
+end
