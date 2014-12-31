@@ -40,7 +40,10 @@ defmodule TestSeven do
   test "get_extentsion returns the file extension" do
     assert Seven.get_extentsion("jason/elx.ixir") == ".ixir"
   end
-  
 
+  test "System.cmd enters a console command" do
+    result = System.cmd("echo", ["I am an echo"])
+    assert {"I am an echo\n", 0} == result
+  end
 
 end
