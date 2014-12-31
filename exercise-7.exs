@@ -9,6 +9,10 @@ defmodule Seven do
     System.get_env(varname)
   end
 
+  def get_extentsion(path) do
+    Path.extname(path)
+  end
+
 end
 
 Seven.float_to_string(1.523)
@@ -26,11 +30,17 @@ defmodule TestSeven do
   test "get os environment var" do
     put_worked = System.put_env("WTF", "CUH")
     result = Seven.get_os_var("WTF")
+    IO.puts result
     assert put_worked == :ok
     assert result == "CUH"
     deleted = System.delete_env("WTF")
     assert deleted == :ok
   end
+
+  test "get_extentsion returns the file extension" do
+    assert Seven.get_extentsion("jason/elx.ixir") == ".ixir"
+  end
+  
 
 
 end
