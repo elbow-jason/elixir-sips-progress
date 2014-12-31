@@ -1,5 +1,6 @@
 
 defmodule Commando do
+
   def echo(input) do
     IO.puts "#{input}"
   end
@@ -9,7 +10,7 @@ defmodule Commando do
     acc
   end
 
-  def add(acc, [head | tail])
+  def add(acc, [head | tail]) do
     add(acc+head, tail)
   end
 
@@ -28,11 +29,11 @@ defmodule Commando do
   def handle_args(_) do
     IO.puts "Unrecognized command"
   end
+end
 
-
-  case System.argv do
-    args ->
-      Commando.handle_args(args)
-      _ ->
-        IO.puts "something unexpected happened"
+case System.argv do
+  args ->
+    Commando.handle_args(args)
+  _ ->
+    IO.puts "something unexpected happened"
 end
