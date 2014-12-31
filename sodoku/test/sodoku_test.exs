@@ -9,7 +9,7 @@ defmodule SodokuTest do
       [2,1]
     ]
 
-    assert Sodoku.solved?(board) == true
+    assert solved?(board) == true
   end
 
   test "solve returns false if the board is not solved" do
@@ -42,7 +42,7 @@ defmodule SodokuTest do
       [1,2],
       [1,2]
     ]
-    assert rows_solved?(board) == false
+    assert cols_solved?(board) == false
   end
 
 
@@ -51,7 +51,8 @@ defmodule SodokuTest do
       [2,2],
       [1,1]
     ]
-    assert rows_solved?(board) == true
+    assert cols_solved?(board) == true
   end
+
 
 end
