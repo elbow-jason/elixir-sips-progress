@@ -13,6 +13,10 @@ defmodule Seven do
     Path.extname(path)
   end
 
+  def command(cmd, args_list) do
+    System.cmd(cmd, args_list)
+  end
+
 end
 
 Seven.float_to_string(1.523)
@@ -41,8 +45,8 @@ defmodule TestSeven do
     assert Seven.get_extentsion("jason/elx.ixir") == ".ixir"
   end
 
-  test "System.cmd enters a console command" do
-    result = System.cmd("echo", ["I am an echo"])
+  test "Seven.command enters a console command" do
+    result = Seven.command("echo", ["I am an echo"])
     assert {"I am an echo\n", 0} == result
   end
 
