@@ -16,7 +16,7 @@ defmodule TestPrefix do
     assert is_function(fun) == true
   end
 
-  test "function from pre returns the prefix then a space then the its arg" do
+  test "function from pre returns the prefix then a space then its arg" do
     mr = Prefix.pre("Mr.")
     result = mr.("Jason")
     assert result == "Mr. Jason"
