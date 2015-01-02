@@ -25,4 +25,11 @@ defmodule TestStreamo do
   test "fib works" do
     assert Streamo.fib(7) == [1,1,2,3,5,8,13]
   end
+
+  test "want to see the fib of 24? Look at this crazyness." do
+    x = Streamo.fib(24)
+    IO.puts x
+    IO.puts "#{inspect x}"
+  end
 end
+
