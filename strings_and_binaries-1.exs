@@ -32,7 +32,9 @@ defmodule Asskey do
     false
   end
 
-
+  @doc """
+  Man, I gotta start using more builtin functions.
+  """
   def daves_ascii?(sqs), do: Enum.all?(sqs, fn ch -> ch in ? ..?~ end)
 end
 
