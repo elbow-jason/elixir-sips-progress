@@ -3,6 +3,11 @@ defmodule MyList do
     Enum.to_list(from..to)
   end
 
+  def span(low, high) when low == high do
+    [low]
+  end
+
+
   def span(low, high) when low < high do
     [low] ++ span(low + 1, high)
   end
