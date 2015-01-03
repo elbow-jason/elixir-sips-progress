@@ -12,7 +12,9 @@ defmodule MyStr do
 
 end
 
+
 ExUnit.start()
+
 
 defmodule TestMyStr do
   use ExUnit.Case
@@ -28,5 +30,5 @@ defmodule TestMyStr do
     assert MyStr.is_subset?('abcd', 'abcd') == true
     assert MyStr.is_subset?('abcd', 'abc') == false
   end
-  
+
 end
