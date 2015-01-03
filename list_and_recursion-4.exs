@@ -3,8 +3,8 @@ defmodule MyList do
     Enum.to_list(from..to)
   end
 
-  def span(from, to) when from <= to do
-    [from] ++ [span(from+1, to)]
+  def span(low, high) when low < high do
+    [low] ++ span(low + 1, high)
   end
 
 end
@@ -18,7 +18,7 @@ defmodule TestMyList do
     assert MyList.span_no_recurse(0, 5) == [0,1,2,3,4,5]
   end
 
-  test "a list comes out" do
+  test "a list comes out correctly" do
     assert MyList.span(0, 5) == [0,1,2,3,4,5]
   end
 
