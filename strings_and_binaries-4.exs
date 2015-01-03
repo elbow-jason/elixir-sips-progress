@@ -37,7 +37,22 @@ defmodule TestCalc do
   end
 
   test "int_div" do
-    assert calculate("2 / 3") == 0.66666666666666667
+    # anything after the 16th digit is lost? i think?
+    # and underscores are allowed
+
+    #this is false so it is refuted
+    refute calculate("2 / 3") === 0.66666_66666_66666_7
+
+    #this works
+    assert calculate("2 / 3") === 0.66666_66666_66666_6
+
+    #grouped by three
+    assert calculate("2 / 3") === 0.666_666_666_666_666_6
+
+    #float imprecision is still a thing # just fyi
+    refute 0.1 === 0.3 - 0.2
+
   end
+
 
 end
