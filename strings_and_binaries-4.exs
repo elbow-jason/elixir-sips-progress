@@ -1,4 +1,5 @@
 defmodule Calc do
+   @type Option = {:ok, any} | nil
 
   def calculate(exp) do
     exp |> String.split |> do_calc
