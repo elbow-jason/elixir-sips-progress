@@ -1,9 +1,24 @@
 defmodule Issues.CLI do
-  @default_count 4
   @moduledoc """
   CLI parsing and dispatch to functions that will generate the
   issues table for the last _n_ issues of a github project
   """
+  # try 
+  #   mix run -e 'Issues.CLI.run(["elixir-lang", "elixir", "10"])'
+  #   mix run -e 'Issues.CLI.run(["elixir-lang", "elixir"])'
+
+  @default_count 4
+
+  @doc """
+  main/1 is used for generation of escript (command-line command generator)
+
+  generation of the binary is achieved via:
+
+  ```$ mix escript.build```
+  """
+  def main(argv) do
+    run(argv)
+  end
 
   def run(argv) do
     argv
@@ -18,11 +33,23 @@ defmodule Issues.CLI do
     System.halt(0)
   end
 
-  def process({user, project, _count}) do
+  def process({user, project, count}) do
     Issues.GithubIssues.fetch(user, project)
     |> decode_response
     |> convert_to_list_of_hashdicts
-    
+    |> sort_into_ascending_order
+    |> Enum.take(count)
+    |> pretty_print_columns
+  end
+
+  def pretty_print_columns(list) do
+    Issues.Formatter.print_table(list)
+  end
+
+  def sort_into_ascending_order(list_of_issues) do
+    sorter = fn i1, i2 -> i1["created_at"] >= i2["created_at"] end
+    list_of_issues
+    |> Enum.sort(sorter)
   end
 
   def decode_response({:ok, body}), do: body
