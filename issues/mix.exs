@@ -5,6 +5,8 @@ defmodule Issues.Mixfile do
     [app: :issues,
      version: "0.0.1",
      elixir: "~> 1.0",
+     name: "Issues",
+     source_url: "https://github.com/elbow-jason/elixir-sips-progress/issues",
      test_coverage: [tool: ExCoveralls],
      escript: escript_config,
      deps: deps
@@ -33,7 +35,9 @@ defmodule Issues.Mixfile do
     [
       { :httpoison, "~> 0.4" },
       { :jsx,       "~> 2.0" },
-      {:excoveralls, "~> 0.3", only: :dev}
+      { :excoveralls, "~> 0.3", only: :dev },
+      { :ex_doc, github: "elixir-lang/ex_doc" },
+      { :earmark, ">= 0.0.0" }
     ]
   end
 

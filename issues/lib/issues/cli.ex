@@ -12,9 +12,7 @@ defmodule Issues.CLI do
   @doc """
   main/1 is used for generation of escript (command-line command generator)
 
-  generation of the binary is achieved via:
-
-  ```$ mix escript.build```
+  generation of the binary is achieved via: ```$ mix escript.build```
   """
   def main(argv) do
     run(argv)

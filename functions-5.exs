@@ -14,7 +14,7 @@ ExUnit.start()
 defmodule TestAmper do
   use ExUnit.Case
 
-  test "add_two works" do
+  test "add_two workss" do
     assert Amper.add_two([1,2,3,4]) == [3,4,5,6]
   end
 
