@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.Issues.GithubIssues.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/elbow/elixir-sips-progress/issues/lib/issues/githhub_issues.ex by COVER 2015-01-04 at 13:34:08
+
+****************************************************************************
+
+<font color=red>     0..|  defmodule Issues.GithubIssues do</font>
+        |    
+        |    @user_agent [{ "User-agent", "Elixir jlgoldb2@asu.edu" }]
+        |  
+        |    def fetch(user, project) do 
+        |      issues_url(user, project)
+        |      |&gt; HTTPoison.get(@user_agent)
+<font color=red>     0..|      |&gt; handle_response</font>
+        |    end
+        |  
+        |    #use a module to fetch the value at compile time
+        |    @github_url Application.get_env(:issues, :github_url)
+        |    def issues_url(user, project) do
+        |      # e.g. "https://api.github.com/repos/elixir-lang/elixir/issues"
+<font color=red>     0..|      "#{@github_url}/repos/#{user}/#{project}/issues"</font>
+        |    end
+        |  
+        |    def handle_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}) do
+        |      {:ok, :jsx.decode(body)}
+        |    end 
+        |  
+        |    def handle_response({:ok, %HTTPoison.Response{status_code: _, body: body}}) do
+        |      {:error, :jsx.decode(body)}
+        |    end
+        |  
+        |    def handle_response({:error, err}) do
+        |      {:error, err}
+        |    end
+        |  
+        |  end</pre>
+</body>
+</html>
